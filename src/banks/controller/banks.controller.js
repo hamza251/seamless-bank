@@ -9,11 +9,6 @@ const env = require('../../../common/config/env.config');
 const { response } = require('express');
 const validator = require('../../../common/helpers/validation.handler');
 
-/**
- * Get current balance form environment 
- * @param {*} req 
- * @param {*} res 
- */
 module.exports.BankController = {
 
     /**
