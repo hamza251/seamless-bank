@@ -33,7 +33,7 @@ module.exports.BankController = {
             const page = await browser.newPage();
             // generate random user agent so that the crawler act as a browser
             await page.setUserAgent(userAgent.toString())
-            await page.goto(env.web_url,{timeout: 15000}); // will timeout in 15 second
+            await page.goto(env.web_url,{timeout: 20000}); // will timeout in 20 second
             
             await page.type('input[id=iban-number]', iban);
             await page.evaluate(() => {
@@ -42,14 +42,14 @@ module.exports.BankController = {
             await page.waitForNavigation();
             
             // get the bank info from the DOM
-            const bank = await page.evaluate('document.querySelector("img.bank-logo").getAttribute("src")');
-            const logo = await page.evaluate('document.querySelector("img.bank-logo").getAttribute("alt")');
+            const logo = await page.evaluate('document.querySelector("img.bank-logo").getAttribute("src")');
+            const bank = await page.evaluate('document.querySelector("img.bank-logo").getAttribute("alt")');
 
             return responseHandler.success({bank,logo});
 
         } catch (e) {
             if (e instanceof puppeteer.errors.TimeoutError) {
-                return  responseHandler.success({
+                return  responseHandler.timeout({
                     "status": e.name,
                     "message": e.message
                 });
@@ -59,7 +59,6 @@ module.exports.BankController = {
                 "message":e.message
             });
         }
-
     },
     
     /**
@@ -83,6 +82,7 @@ module.exports.BankController = {
                 "message":e.message
             })  
         }
+        
     },
 
     /**

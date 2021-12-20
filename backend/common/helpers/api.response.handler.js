@@ -11,8 +11,7 @@ module.exports = {
      */
     errorApiResponse: function (detailsObj,statusCode) {
         let res = this.getResponseObject();
-        res.status(statusCode);
-        return res.send({
+        return res.status(statusCode).send({
             "code": statusCode,
             "error": detailsObj
         });
@@ -27,8 +26,7 @@ module.exports = {
     successApiResponse: function (detailsObj, statusCode) {
         let res = this.getResponseObject();
 
-        res.status(statusCode);
-        return res.send({
+        return res.status(statusCode).send({
             "code": statusCode,
             "data": detailsObj
         });
@@ -97,7 +95,7 @@ module.exports = {
      * @param {Object} details 
      * @param {integer} statusCode 
      */
-    timeout: function (detailsObj, statusCode = 503){
+    timeout: function (detailsObj, statusCode = 504){
         return this.errorApiResponse(detailsObj,statusCode);
     },
 

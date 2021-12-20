@@ -1,0 +1,33 @@
+.main{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction:row;
+  height:100vh
+}
+
+.main .balance{
+  font-weight: bold;
+  text-align: right;
+} 
+
+.chart-main{
+  height:50px;
+  text-align:left;
+  padding:10px;
+  display:flex
+}
+
+.country-flag{
+  display:block;
+  margin-right:5px
+}
+.bank-logo{
+  display:block;
+  margin-left:auto;
+  height: 40px;
+}
+
+.text-center{
+  text-align:center
+}
